@@ -15,7 +15,7 @@
 
         <div class="row gy-4 justify-content-center">
           <div class="col-lg-4">
-            <img src="assets/img/profil-img.jpg" class="img-fluid" alt="">
+            <img src="assets/img/profile.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 content">
             <h2>Iqbal Ramadan</h2>
@@ -26,7 +26,7 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>22 November 2001</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Instagram:</strong> <span>@iqbalr22</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>0895328113437</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Jakarta</span></li>
                 </ul>
@@ -34,16 +34,14 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>24</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>S.Kom.</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>iqbalramadan221101@gmail.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Ojol Grab</span></li>
                 </ul>
               </div>
             </div>
             <p class="py-3">
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque.
-            </p>
+              belajar, belajar, dan belajar
           </div>
         </div>
 
