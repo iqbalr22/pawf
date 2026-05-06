@@ -10,6 +10,6 @@ class PostModel extends Model
     protected $primaryKey       = 'id';
 
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['title', 'content', 'status', 'author', 'slug'];
+    protected $allowedFields = ['title', 'content', 'status', 'author', 'slug', 'image'];
 }
 

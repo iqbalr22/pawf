@@ -16,6 +16,6 @@ class Page extends BaseController
     
     public function faqs()
 	{
-		echo view("Faqs");
+		echo view("faqs");
 	}
 }
