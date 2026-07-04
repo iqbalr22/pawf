@@ -1,0 +1,22 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div class="admin-hero">
+  <div class="hero-copy">
+    <h1>Selamat datang di Iqbal Blog Admin</h1>
+    <p>Kelola postingan, pengguna, dan konten blog dengan antarmuka yang lebih bersih dan fokus.</p>
+  </div>
+  <div class="hero-cards">
+    <div class="hero-card">
+      <strong>Posting</strong>
+      <span>Kelola artikel dengan cepat</span>
+    </div>
+    <div class="hero-card">
+      <strong>Pengguna</strong>
+      <span>Atur akun dan akses</span>
+    </div>
+  </div>
+</div>
+
+{{ block.super }}
+{% endblock %}

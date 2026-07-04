@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="detail-card">
+  <p class="eyebrow">Hapus artikel</p>
+  <h2>Hapus “{{ post.title }}”?</h2>
+  <p>Posting ini akan dihapus secara permanen dan tidak dapat dikembalikan.</p>
+
+  <form method="post" class="form-actions">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Ya, hapus</button>
+    <a class="btn btn-secondary" href="{{ post.get_absolute_url }}">Batal</a>
+  </form>
+</section>
+{% endblock content %}

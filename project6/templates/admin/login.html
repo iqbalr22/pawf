@@ -1,0 +1,27 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}Masuk Admin | Iqbal Blog Admin{% endblock %}
+
+{% block content %}
+<div class="admin-login-panel">
+  <div class="login-branding">
+    <h1>Iqbal Blog Admin</h1>
+    <p>Masuk untuk mengelola postingan dan konten blog.</p>
+  </div>
+  <form action="" method="post" class="login-form">
+    {% csrf_token %}
+    <div class="form-row">
+      <label for="id_username">{% trans "Username" %}:</label>
+      {{ form.username }}
+    </div>
+    <div class="form-row">
+      <label for="id_password">{% trans "Password" %}:</label>
+      {{ form.password }}
+    </div>
+    <div class="submit-row">
+      <input type="submit" value="{% trans "Log in" %}" class="button">
+    </div>
+  </form>
+</div>
+{% endblock %}

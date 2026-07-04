@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="detail-card">
+  <p class="eyebrow">Masuk</p>
+  <h2>Masuk ke akun blog</h2>
+  <p>Gunakan akun admin atau akun pengguna yang sudah dibuat untuk menulis artikel baru.</p>
+
+  <form method="post" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_username">Username</label>
+      {{ form.username }}
+    </div>
+    <div class="form-group">
+      <label for="id_password">Password</label>
+      {{ form.password }}
+    </div>
+    <button class="btn btn-primary" type="submit">Masuk</button>
+  </form>
+  <p class="post-meta">Belum punya akun? <a href="{% url 'register' %}">Daftar sekarang</a>.</p>
+</section>
+{% endblock content %}

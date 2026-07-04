@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iqbal Blog</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+  <link href="{% static 'css/base.css' %}?v=3" rel="stylesheet">
+</head>
+<body data-theme="light">
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="{% url 'home' %}">Iqbal Blog</a>
+      <nav class="site-nav">
+        <a href="{% url 'home' %}#home">Home</a>
+        <a href="{% url 'home' %}#about">About</a>
+        <a href="{% url 'home' %}#contact">Contact</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'post_new' %}">Buat Post</a>
+        <form method="post" action="{% url 'logout' %}" class="nav-logout-form">
+          {% csrf_token %}
+          <button type="submit" class="nav-link-button">Keluar</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}">Masuk</a>
+        <a href="{% url 'register' %}">Daftar</a>
+        {% endif %}
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ganti tema" aria-pressed="false">🌙</button>
+      </nav>
+    </header>
+
+    <form class="search-bar" method="get" action="{% url 'home' %}">
+      <input type="text" name="q" value="{{ query|default:'' }}" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+
+    <main class="content">
+      {% block content %}
+      {% endblock content %}
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Iqbal Blog</p>
+      <div class="footer-links">
+        <a href="{% url 'home' %}#about">About</a>
+        <a href="{% url 'home' %}#contact">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const storageKey = 'blog-theme';
+    const body = document.body;
+    const toggleButton = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem(storageKey);
+    const initialTheme = savedTheme || 'light';
+
+    body.setAttribute('data-theme', initialTheme);
+    if (toggleButton) {
+      toggleButton.setAttribute('aria-pressed', initialTheme === 'dark');
+      toggleButton.textContent = initialTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    toggleButton?.addEventListener('click', () => {
+      const nextTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', nextTheme);
+      localStorage.setItem(storageKey, nextTheme);
+      toggleButton.setAttribute('aria-pressed', nextTheme === 'dark');
+      toggleButton.textContent = nextTheme === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>
+
+    
