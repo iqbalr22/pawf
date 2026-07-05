@@ -12,13 +12,16 @@ from .models import Post
 
 def post_list(request):
     query = request.GET.get("q", "").strip()
-    posts = Post.objects.all().order_by("-id")
+    posts = Post.objects.select_related("author").order_by("-id")
 
     if query:
-        posts = posts.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        posts = posts.filter(
+            Q(title__icontains=query)
+            | Q(body__icontains=query)
+            | Q(author__username__icontains=query)
+        )
 
     latest_post = posts.first()
-
     paginator = Paginator(posts, 4)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)

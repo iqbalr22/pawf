@@ -127,6 +127,16 @@ body {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  text-decoration: none;
+  color: var(--admin-text);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.hero-card:hover,
+.hero-card:focus {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.2);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.08);
 }
 
 .hero-card strong {

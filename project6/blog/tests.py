@@ -87,3 +87,46 @@ class BlogTests(TestCase):
         response = self.client.post(reverse("post_delete", kwargs={"pk": self.post.pk}))
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Post.objects.filter(pk=self.post.pk).exists())
+
+
+class AdminDashboardTests(TestCase):
+    def test_admin_dashboard_has_clickable_links_for_admin_and_users(self):
+        admin_user = get_user_model().objects.create_superuser(
+            username="adminuser",
+            email="admin@example.com",
+            password="adminpass123",
+        )
+        self.client.force_login(admin_user)
+
+        response = self.client.get(reverse("admin:index"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<a class="hero-card" href="/admin/">')
+        self.assertContains(response, '<a class="hero-card" href="/admin/auth/user/">')
+
+
+class SearchTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username="searcher",
+            email="searcher@example.com",
+            password="secret123",
+        )
+        self.post = Post.objects.create(
+            title="Django search test",
+            body="Isi artikel yang bisa dicari",
+            author=self.user,
+        )
+
+    def test_search_returns_matching_articles(self):
+        response = self.client.get(reverse("home"), {"q": "django"})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Django search test")
+        self.assertContains(response, "Hasil pencarian")
+
+    def test_search_with_no_results_shows_empty_state(self):
+        response = self.client.get(reverse("home"), {"q": "tidakada"})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Belum ada posting yang sesuai pencarian.")

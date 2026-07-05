@@ -34,7 +34,7 @@
   <div class="section-heading">
     <h3>Artikel terbaru</h3>
     <p>{% if query %}Hasil pencarian untuk “{{ query }}”.{% else %}Jelajahi tulisan terbaru yang tersedia.{% endif %}</p>
-    <p class="result-count">{{ total_posts }} artikel tersedia</p>
+    <p class="result-count">{{ total_posts }} artikel {% if query %}ditemukan{% else %}tersedia{% endif %}</p>
   </div>
 
   {% if posts %}
@@ -55,13 +55,13 @@
 
   <div class="pagination">
     {% if page_obj.has_previous %}
-    <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">← Sebelumnya</a>
+    <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}">← Sebelumnya</a>
     {% endif %}
 
     <span>Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages }}</span>
 
     {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Berikutnya →</a>
+    <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}">Berikutnya →</a>
     {% endif %}
   </div>
   {% else %}

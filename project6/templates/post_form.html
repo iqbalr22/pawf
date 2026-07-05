@@ -2,9 +2,9 @@
 
 {% block content %}
 <section class="detail-card">
-  <p class="eyebrow">{{ page_title|default:"Buat artikel baru" }}</p>
-  <h2>{{ heading|default:"Tulis postinganmu" }}</h2>
-  <p>{{ subtitle|default:"Tambahkan artikel baru ke blog dengan cepat dan mudah." }}</p>
+  <p class="eyebrow">{{ page_title }}</p>
+  <h2>{{ heading }}</h2>
+  <p>{{ subtitle }}</p>
 
   <form method="post" class="post-form" enctype="multipart/form-data">
     {% csrf_token %}
@@ -32,8 +32,8 @@
     </div>
 
     <div class="form-actions">
-      <button class="btn btn-primary" type="submit">{{ submit_label|default:"Publikasikan" }}</button>
       <a class="btn btn-secondary" href="{% if post %}{{ post.get_absolute_url }}{% else %}{% url 'home' %}{% endif %}">Batal</a>
+      <button class="btn btn-primary" type="submit">{{ submit_label }}</button>
     </div>
   </form>
 </section>
